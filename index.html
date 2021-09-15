@@ -1,0 +1,30 @@
+<html>
+<body>
+<form>
+    <label for="imagename">Image Size:</label>
+    <input type="text" id="imagesize" value="" />
+    <label for="email">Email:</label>
+    <input type="email" id="email" onclick ="send(this)"/>
+    <input type="button" id="btn" value="GO" />
+    
+</form>
+
+<form enctype="multipart/form-data" method="post" onsubmit="formSubmit()">
+    <label>Attach Image:</label>
+    <input type="file" name="my_file"> 
+    <input type="submit" value="Submit">
+</form>
+
+    <script type="text/javascript">
+        document.getElementById('btn').onclick = function() {
+            var val = document.getElementById('imagename').value,
+                src = 'https://picsum.photos/' + val + '?random=2',
+                img = document.createElement('img');
+
+            img.src = src;
+            document.body.appendChild(img);
+        }
+    </script>
+    <script src="/js/imgLoader.js"></script>
+</body>
+</html>
