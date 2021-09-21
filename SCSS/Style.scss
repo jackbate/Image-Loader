@@ -1,0 +1,33 @@
+body{
+    background-color: #141115;
+}
+
+h1{
+    color: #f1f1f1;
+}
+
+h2{
+    color: #f1f1f1;
+}
+
+header{
+    text-align: center;
+    margin: auto;
+}
+
+form{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 15%;
+    input:nth-child(odd){
+        margin: 10px 0 5px;
+    }
+}
+
+.image_container{
+    border: 1px solid black;
+    margin-top: 30px;
+    width: max-content;
+}
