@@ -2,8 +2,9 @@ var randomPic = 1;
 var removalHelp = 0;
 var src;
 
-
-var userImages = [];
+var users = [];
+// var images = [];
+var arrayLength = 1;
 
 
 
@@ -34,26 +35,45 @@ document.getElementById('savePhoto').onclick = function(e) {
 
         let addUserDetails = {
             email: document.getElementById('email').value,
-            savedImage: document.getElementById('image').src
+            images: [
+                document.getElementById('image').src
+            ]
         }
 
-        userImages.push(addUserDetails);
+        // users.push(addUserDetails)
+        // console.log(users[0].email);
+        
+        for (let i=0; i < arrayLength; i++){
+            // console.log(users[i].email);
+            console.log(arrayLength);
+            if (arrayLength === 1 || emailAddress !== users[i].email){
+                users.push(addUserDetails);
+                console.log('does not match any in database')
+                arrayLength = users.length
+                console.log(users)
+            }else{
+                users[0].images.push(document.getElementById('image').src)
+                console.log('matches an email address')
+                console.log(users)
+                arrayLength = users.length
+            }  
+            return arrayLength
+        }
 
-        let emailCheck = false
-        // let emailCheck = addUserDetails[0].email.includes(emailAddress)
-        console.log(userImages[addUserDetails].email)
-        if (emailCheck === false){
-            // userImages.push(addUserDetails);
-            console.log(emailCheck);
+        // console.log(users[addUserDetails].email)
+        // if (emailCheck === false){
+        //     userImages.push(addUserDetails);
+        //     console.log(emailCheck);
             
-        }else{
-            alert("added additional images to array")
-            userImages.push(document.getElementById('image').src);
-            console.log(emailCheck);
-        }
+        // }else{
+        //     alert("added additional images to array")
+        //     users.push(document.getElementById('image').src);
+        //     console.log(emailCheck);
+        // }
         // document.forms[0].reset();
         // userImages.push(addUserDetails);
-        console.log(userImages);
-        console.log(emailAddress);
-        return userImages;
+        // console.log(users);
+        // console.log(emailAddress);
+        return users;
+        
 }
