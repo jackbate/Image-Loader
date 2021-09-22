@@ -5,6 +5,7 @@ var src;
 var users = [];
 // var images = [];
 var arrayLength = 1;
+var arrayPresent = 0;
 
 
 
@@ -40,24 +41,31 @@ document.getElementById('savePhoto').onclick = function(e) {
             ]
         }
 
+        console.log(arrayPresent)
         // users.push(addUserDetails)
         // console.log(users[0].email);
         
         for (let i=0; i < arrayLength; i++){
             // console.log(users[i].email);
             console.log(arrayLength);
-            if (arrayLength === 1 || emailAddress !== users[i].email){
-                users.push(addUserDetails);
+            if (arrayPresent === 0 || emailAddress !== users[i].email){
+                users.push(addUserDetails); // creates the users account
                 console.log('does not match any in database')
                 arrayLength = users.length
                 console.log(users)
-            }else{
-                users[0].images.push(document.getElementById('image').src)
+                arrayPresent = 1
+                console.log(arrayPresent)
+                return arrayPresent
+            }else if(users[i].email === emailAddress){
+                users[i].images.push(document.getElementById('image').src) //pushes src to image to create a new image
                 console.log('matches an email address')
                 console.log(users)
                 arrayLength = users.length
-            }  
-            return arrayLength
+                console.log(arrayPresent)
+                return arrayLength
+                break;
+            } 
+            
         }
 
         // console.log(users[addUserDetails].email)
@@ -74,6 +82,7 @@ document.getElementById('savePhoto').onclick = function(e) {
         // userImages.push(addUserDetails);
         // console.log(users);
         // console.log(emailAddress);
+    
         return users;
         
 }
