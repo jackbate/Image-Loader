@@ -1,13 +1,15 @@
 body{
-    background-color: #141115;
+    background-color: #f1f1f1;
+    font-family: 'Stick No Bills', sans-serif;
 }
 
 h1{
-    color: #f1f1f1;
+    color: #141115;
 }
 
 h2{
-    color: #f1f1f1;
+    color: #141115;
+    width: max-content;
 }
 
 header{
@@ -31,3 +33,24 @@ form{
     margin-top: 30px;
     width: max-content;
 }
+
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #141115; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .5em; /* Adjust as needed */
+    animation:  
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 32% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #141115; }
+  }

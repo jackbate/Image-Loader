@@ -27,22 +27,33 @@ document.getElementById('btn').onclick = function() {
     return src;
 }
 
-document.getElementById('savePhoto').onclick = function() {
-    let emailAddress = document.getElementById('email').value;
+document.getElementById('savePhoto').onclick = function(e) {
+    e.preventDefault();
+    // let form = document.getElementById('savePhoto');
+        let emailAddress = document.getElementById('email').value;
 
-    let addUserDetails = {
-        email: document.getElementById('email').value,
-        savedImage: document.getElementById('image').src
-    }
-    let emailCheck = userImages.includes(document.getElementById('email').value)
-    if (emailCheck == false){
+        let addUserDetails = {
+            email: document.getElementById('email').value,
+            savedImage: document.getElementById('image').src
+        }
+
         userImages.push(addUserDetails);
-        console.log(emailCheck);
-    }else{
-        alert("added additional images to array")
-        console.log(emailCheck);
-    }
-    // document.forms[0].reset();
-    // userImages.push(addUserDetails);
-    console.log(userImages);
-}   
+
+        let emailCheck = false
+        // let emailCheck = addUserDetails[0].email.includes(emailAddress)
+        console.log(userImages[addUserDetails].email)
+        if (emailCheck === false){
+            // userImages.push(addUserDetails);
+            console.log(emailCheck);
+            
+        }else{
+            alert("added additional images to array")
+            userImages.push(document.getElementById('image').src);
+            console.log(emailCheck);
+        }
+        // document.forms[0].reset();
+        // userImages.push(addUserDetails);
+        console.log(userImages);
+        console.log(emailAddress);
+        return userImages;
+}
