@@ -1,21 +1,41 @@
 var randomPic = 1;
 var removalHelp = 0;
 var src;
+var img;
+
+const URL = '';
+
+// const URL = 'https://picsum.photos/300/200';
+var val;
 
 var users = [];
-// var images = [];
 var arrayLength = 1;
 var arrayPresent = 0;
+
+// function httpGetAsync(theUrl, callback)
+// {
+//     var xmlHttp = new XMLHttpRequest();
+//     xmlHttp.onreadystatechange = function() { 
+//         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+//             callback(xmlHttp.responseText);
+//     }
+//     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+//     xmlHttp.send(null);
+//     console.log(xmlHttp).responseText;
+// }
 
 
 
 document.getElementById('btn').onclick = function() {
-    var val = document.getElementById('imagesize').value,
+    val = document.getElementById('imagesize').value,
     src = 'https://picsum.photos/' + val + '?random=' + randomPic,
     img = document.createElement('img');
+    const URL = `https://picsum.photos/${val}`;
+    console.log(URL)
     img.src = src;
     randomPic += 1;
     removalHelp ++
+    
     if (removalHelp <=1){
         document.getElementById('image_container').innerHTML += '<img src="'+img.src+'" id = "image"/>';
         console.log('first stage complete')
@@ -26,8 +46,26 @@ document.getElementById('btn').onclick = function() {
 
         console.log("this is image " + removalHelp)
     }
-    return src;
+    
+    return URL;
+    // rerturn src
 }
+
+
+const axiosImgGet = function() {
+    axios.get(URL)
+  .then((response) => {
+    let picID = response.headers['picsum-id'];
+    let picURL = `https://picsum.photos/id/${picID}/${val}`;
+    img.src = picURL;
+  console.log('the xhr request has worked')
+  })
+  
+  };
+
+
+//
+console.log(axiosImgGet());
 
 document.getElementById('savePhoto').onclick = function(e) {
     e.preventDefault();
@@ -46,7 +84,6 @@ document.getElementById('savePhoto').onclick = function(e) {
         // console.log(users[0].email);
         
         for (let i=0; i < arrayLength; i++){
-            // console.log(users[i].email);
             console.log(arrayLength);
             if (arrayPresent === 0 || emailAddress !== users[i].email){
                 users.push(addUserDetails); // creates the users account
@@ -54,14 +91,15 @@ document.getElementById('savePhoto').onclick = function(e) {
                 arrayLength = users.length
                 console.log(users)
                 arrayPresent = 1
-                console.log(arrayPresent)
-                return arrayPresent
+
             }else if(users[i].email === emailAddress){
                 users[i].images.push(document.getElementById('image').src) //pushes src to image to create a new image
                 console.log('matches an email address')
                 console.log(users)
                 arrayLength = users.length
                 console.log(arrayPresent)
+                console.log(users.indexOf(emailAddress));
+                alert(`Image has been attached to ${emailAddress}'s account`)
                 return arrayLength
                 break;
             } 
