@@ -101,4 +101,8 @@ form input:nth-child(odd) {
     border-color: #141115;
   }
 }
+
+.img {
+  border-radius: 50%;
+}
 /*# sourceMappingURL=Style.css.map */

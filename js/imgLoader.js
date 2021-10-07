@@ -6,7 +6,7 @@ var img;
 const URL = '';
 
 // const URL = 'https://picsum.photos/300/200';
-var val;
+var val = '285/285';
 
 var users = [];
 var arrayLength = 1;
@@ -27,7 +27,7 @@ var arrayPresent = 0;
 
 
 document.getElementById('btn').onclick = function() {
-    val = document.getElementById('imagesize').value,
+    // val = document.getElementById('imagesize').value,
     src = 'https://picsum.photos/' + val + '?random=' + randomPic,
     img = document.createElement('img');
     const URL = `https://picsum.photos/${val}`;
@@ -67,8 +67,8 @@ const axiosImgGet = function() {
 //
 console.log(axiosImgGet());
 
-document.getElementById('savePhoto').onclick = function(e) {
-    e.preventDefault();
+function getImage(e) {
+    e.preventDefault(); //the code originally working for the program before setting the program to only work on form sub,ission
     // let form = document.getElementById('savePhoto');
         let emailAddress = document.getElementById('email').value;
 
@@ -81,8 +81,8 @@ document.getElementById('savePhoto').onclick = function(e) {
 
         console.log(arrayPresent)
         // users.push(addUserDetails)
-        // console.log(users[0].email);
-        
+        console.log(users[0].email);
+
         for (let i=0; i < arrayLength; i++){
             console.log(arrayLength);
             if (arrayPresent === 0 || emailAddress !== users[i].email){
@@ -101,8 +101,12 @@ document.getElementById('savePhoto').onclick = function(e) {
                 console.log(users.indexOf(emailAddress));
                 alert(`Image has been attached to ${emailAddress}'s account`)
                 return arrayLength
-                break;
+                
             } 
+            // Tried using this as i believed that i needed to target the submission button to prevent reload
+            // document.getElementById('savePhoto').onclick = (function (e) {
+            //     e.preventDefault();
+            // });
             
         }
 

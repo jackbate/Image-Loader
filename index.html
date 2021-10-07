@@ -4,6 +4,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
 <body>
@@ -11,16 +12,24 @@
         <h1>Image Loader</h1>
         <h2 class="typewriter">Welcome to my Image loader!</h2>
     </header>
-    <form>
-        <input type="text" id="imagesize" value="" placeholder="Image Size (Width / Height)" required/>
-        <input type="button" id="btn" value="GO" />
+    <form onsubmit="getImage()" autocomplete="off">
+        <!-- previously used to take user input and apply it to the size displayed on the screen -->
+        <!-- <input type="text" id="imagesize" value="" placeholder="Image Size (Width / Height)" required/> -->
+        <input type="button" id="btn" value="Load Image!" />
         <br>
         <br>
-        <input type="email" id="email" placeholder="Email" required/>
+        <input type="email" id="email" placeholder="Email"  pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required/>
+        <h3 id="result"></h3>
         <input type="submit" id="savePhoto" value="Save Me This Photo!" onsubmit="return true"/>
     <div class="image_container" id="image_container">
     </div>
 </form>
+
+<div>
+    <h2 id="emailAddress"></h2>
+    <img id="storedImage" class="img" src=" "></img>
+</div>
     <script src="/js/imgLoader.js"></script>
+    <script src="/js/emailValidation.js"></script>
 </body>
 </html>
